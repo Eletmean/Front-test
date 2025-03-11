@@ -1,11 +1,8 @@
 services:
   angular-app:
-    build: .
+    build: .ы
     container_name: angular-app
     working_dir: /angular-app
     ports:
       - "4200:4200"
-    volumes:
-      - /c/Adev/front-test:/angular-app
-    environment:
-      - STYLE=scss
+    command: npm start -- --host=0.0.0.0
