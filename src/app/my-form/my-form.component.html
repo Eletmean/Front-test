@@ -1,0 +1,49 @@
+<button class="theme-toggle-button" (click)="toggleTheme()">
+  <img [src]="themeService.isDarkTheme() ? '/iconDark.svg' : '/iconLight.svg'" alt="Theme Icon">
+</button>
+
+<div class="forma">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="login-form">
+      <img src="/Seagul.svg" alt="Seagul">
+      <h1>Sign In</h1>
+
+      <div class="form-group">
+          <div class="input-container">
+              <input type="email" 
+                     formControlName="email" 
+                     id="email" 
+                     placeholder=" " 
+                     [class.error]="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" 
+                     required>
+              <label for="email" class="floating-label">Email</label>
+              <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="error-message">
+                Invalid email address.
+              </div>
+          </div>
+          <div class="input-container">
+              <input type="password" 
+                     formControlName="password" 
+                     id="password" 
+                     placeholder=" " 
+                     [class.error]="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" 
+                     required>
+              <label for="password" class="floating-label">Password</label>
+              <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="error-message">
+                  <div *ngIf="loginForm.get('password')?.errors?.['invalidPassword']">
+                    The password must contain lowercase letter, uppercase letter, number and special character.
+                  </div>
+                  <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                    This value is too short. It should have 6 characters or more.
+                  </div>
+              </div>
+          </div>
+
+          <div class="forgot-and-button">
+              <a href="#" class="Forgot-password">Forgot password?</a>
+              <button type="submit" [disabled]="isSubmitting">Submit</button>
+          </div>
+      </div>
+  </form>
+
+  <a href="#" class="create-account">Or create an account</a>
+</div>
