@@ -1,6 +1,6 @@
 services:
   angular-app:
-    build: .ы
+    build: .
     container_name: angular-app
     working_dir: /angular-app
     ports:

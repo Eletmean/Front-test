@@ -1,7 +1,8 @@
-FROM node:18
+FROM cypress/browsers
 
 WORKDIR /angular-app
 
 COPY . .
 
 RUN npm install
+
